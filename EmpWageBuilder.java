@@ -9,32 +9,38 @@ public class EmpWageBuilder {
     public static void main(String[] args) {
 
         int emphrs = 0;
-        int empwage = 0;
         int totalempwage = 0;
+        int totalemphrs = 0;
+        int totalworkingday = 0;
         int day = 0;
 
-        for (int i = 0; i < 20; i++) {
+        while (totalemphrs <= 100 && totalworkingday < 20) {
+
             day++;
+            totalworkingday++;
             int CheckEmp = (int) Math.floor(Math.random() * 10 % 3);
 
             switch (CheckEmp) {
                 case 1:
-                    System.out.println("The Day Employee Is Present Full-Time is : " + day);
+                    System.out.println("Employee is full-time present----Days is : " + totalworkingday
+                            + " & Employee Hrs is : " + emphrs);
                     emphrs = 8;
                     break;
                 case 2:
-                    System.out.println("The Day Employee Is Present Part-time is : " + day);
+                    System.out.println("Employee is part-time present----Days is : " + totalworkingday
+                            + " & Employee Hrs is : " + emphrs);
                     emphrs = 4;
                     break;
                 default:
-                    System.out.println("The Day Employee Is Absent is : " + day);
+                    System.out.println("Employee is absent----Day is : " + day);
                     emphrs = 0;
                     break;
             }
-            empwage = emphrs * Emp_RatePerHrs;
-            totalempwage += empwage;
-            System.out.println("Employee Wage is : " + empwage);
+            totalemphrs += emphrs;
         }
+        totalempwage = totalemphrs * Emp_RatePerHrs;
+        System.out.println("The Max working Hrs : " + totalemphrs);
+        System.out.println("The Max working Days : " + totalworkingday);
         System.out.println("Total Employee Wage is : " + totalempwage);
     }
 }
