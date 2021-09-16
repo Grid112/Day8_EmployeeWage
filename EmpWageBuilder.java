@@ -3,37 +3,41 @@ package com.BridgeLabz;
 import java.util.Random;
 
 public class EmpWageBuilder {
-    public static final int IS_FULL_TIME = 2;
-    public static final int IS_PART_TIME = 1;
-    public static final int EMP_RATE_PER_HOUR = 20;
+    public static final int Emp_RatePerHrs = 20;
+    public static final int workingDays = 20;
 
     public static void main(String[] args) {
-        int IS_FULL_TIME1 = 1;
-        int IS_FULL_TIME2 = 2;
-        int IS_PART_TIME1 = 1;
-        int IS_PART_TIME2 = 1;
-        int EMP_RATE_PER_HOUR = 20;
-        int empHours = 0;
-        int empWage = 0;
-        // Taking Random values 0 or 1. 0==Absent And 1==Present
-        Random random = new Random();
-        int empCheck = random.nextInt(2);
-        int empCheck1 = random.nextInt(3);
-        int empCheck2 = random.nextInt(3);
-        // Checking the condition Using Switch Case
-        switch (empCheck) {
-            case IS_FULL_TIME2:
-                empHours = 8;
-                break;
-            case IS_PART_TIME:
-                empHours = 4;
-                break;
-            default:
-                empHours = 0;
-        }
-        empWage = empHours * EMP_RATE_PER_HOUR;
-        System.out.println("The daily wages of an employee is : " + empWage);
-    }
 
+        int emphrs = 0;
+        int empwage = 0;
+        int totalempwage = 0;
+        int day = 0;
+
+        for (int i = 0; i < 20; i++) {
+            day++;
+            int CheckEmp = (int) Math.floor(Math.random() * 10 % 3);
+
+            switch (CheckEmp) {
+                case 1:
+                    System.out.println("The Day Employee Is Present Full-Time is : " + day);
+                    emphrs = 8;
+                    break;
+                case 2:
+                    System.out.println("The Day Employee Is Present Part-time is : " + day);
+                    emphrs = 4;
+                    break;
+                default:
+                    System.out.println("The Day Employee Is Absent is : " + day);
+                    emphrs = 0;
+                    break;
+            }
+            empwage = emphrs * Emp_RatePerHrs;
+            totalempwage += empwage;
+            System.out.println("Employee Wage is : " + empwage);
         }
+        System.out.println("Total Employee Wage is : " + totalempwage);
+    }
+}
+
+
 
