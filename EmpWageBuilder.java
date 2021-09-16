@@ -1,18 +1,27 @@
 package com.BridgeLabz;
 
-import java.util.Random;
-
 public class EmpWageBuilder {
-    public static final int Emp_RatePerHrs = 20;
-    public static final int workingDays = 20;
+    public final String companyName;
+    public final int Emp_RatePerHrs;
+    public final int workingDays;
+    public final int workingHrs;
+    public int totalempwage;
 
-    public static int Function_EmpWage() {
+
+    public EmpWageBuilder(String companyName, int emp_ratePerHrs, int workingDays, int workingHrs) {
+        this.companyName = companyName;
+        Emp_RatePerHrs = emp_ratePerHrs;
+        this.workingDays = workingDays;
+        this.workingHrs = workingHrs;
+    }
+
+    public void Function_EmpWage() {
         int emphrs = 0;
         int totalemphrs = 0;
         int totalworkingday = 0;
         int day = 0;
 
-        while (totalemphrs <= 100 && totalworkingday < 20) {
+        while (totalemphrs <= 100 || totalworkingday < 20) {
 
             day++;
             totalworkingday++;
@@ -36,15 +45,24 @@ public class EmpWageBuilder {
             }
             totalemphrs += emphrs;
         }
-        int totalempwage = totalemphrs * Emp_RatePerHrs;
-        System.out.println("The Max working Hrs : " + totalemphrs);
-        System.out.println("The Max working Days : " + totalworkingday);
-        System.out.println("The Max working Hrs : " + totalempwage);
-        return totalempwage;
+        totalempwage = totalemphrs * Emp_RatePerHrs;
+    }
+
+    @Override
+    public String toString() {
+        return "\nTotal Employee Wage for : " + companyName + " And Wage is : " + totalempwage + "\n";
     }
 
     public static void main(String[] args) {
-        Function_EmpWage();
+        EmpWageBuilder JioMart = new EmpWageBuilder("JioMart", 20, 28, 100);
+        EmpWageBuilder DMart = new EmpWageBuilder("DMart", 20, 30, 105);
+        EmpWageBuilder AbcMart = new EmpWageBuilder("AbcMart", 20, 31, 98);
+        JioMart.Function_EmpWage();
+        System.out.println(JioMart);
+        DMart.Function_EmpWage();
+        System.out.println(DMart);
+        AbcMart.Function_EmpWage();
+        System.out.println(AbcMart);
     }
 }
 
